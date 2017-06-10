@@ -10,3 +10,11 @@ npm install express ejs body-parser debug express-session connect-mongo mongoose
 ```
 
 ## 配置路由
+```
+/ 首页
+/user/signup  用户注册
+/user/signin  登录
+/user/signout 退出登录
+/article/add 发表文章
+/category/add 增加分类
+```
