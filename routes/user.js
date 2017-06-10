@@ -23,13 +23,20 @@ router.get('/signin',function(req,res){
 });
 router.post('/signin',function(req,res){
   let user = req.body;
-  User.findOne(user,function(err,doc){
+    User.findOne(user,function(err,doc){
      if(err){
          res.redirect('back');
      }else{
          if(doc){
+             //向会话中写入一个消息，消息类型 消息内容
+            req.flash('success','登录成功');
+            //把当前登录成功后的用户对象放置到session对象中
+            req.session.user = doc;
+            //req.session.success = '登录成功';
             res.redirect('/');
          }else{
+             req.flash('error','登录失败');
+            //req.session.error = '登录失败';
             res.redirect('back');
          }
      }

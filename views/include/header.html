@@ -25,3 +25,13 @@
     </div>
 </nav>
 <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <%if(success){%>
+              <div class="alert alert-success"><%=success%></div>
+            <%}%>
+            <%if(error){%>
+              <div class="alert alert-danger"><%=error%></div>
+            <%}%>
+        </div>
+    </div>
