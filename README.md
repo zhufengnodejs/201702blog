@@ -21,3 +21,6 @@ npm install express ejs body-parser debug express-session connect-mongo mongoose
 
 /category/add 增加分类
 ```
+
+## 实现用户注册
+
