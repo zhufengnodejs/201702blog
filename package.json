@@ -1,0 +1,33 @@
+{
+  "name": "201702blog",
+  "version": "1.0.0",
+  "description": "```\r mkdir 201702bog\r cd 201702bog\r npm init -y\r ```\r ## 安装依赖的模块\r ```\r npm in\r ```",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhufengnodejs/201702blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhufengnodejs/201702blog/issues"
+  },
+  "homepage": "https://github.com/zhufengnodejs/201702blog#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "debug": "^2.6.8",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.10.5",
+    "multer": "^1.3.0"
+  }
+}
