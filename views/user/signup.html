@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><%=title%></title>
-    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <div class="navbar-brand">珠峰博客</div>
+<% include ../include/header.html%>
+<div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="control-label col-sm-2">用户名</label>
+                    <div class="col-sm-10 input-group">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label col-sm-2">密码</label>
+                    <div class="col-sm-10 input-group">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="control-label col-sm-2">邮箱</label>
+                    <div class="col-sm-10 input-group">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </div>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <input type="submit" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
         </div>
-        <div>
-            <ul class="nav navbar-nav">
-                <li><a href="/">首页</a></li>
-                <li><a href="/user/signup">注册</a></li>
-                <li><a href="/user/signin">登录</a></li>
-                <li><a href="/user/signout">退出</a></li>
-                <li><a href="/article/add">发表文章</a></li>
-                <li><a href="/category/list">分类管理</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-</body>
-</html>
+</div>
+<% include ../include/footer.html%>
