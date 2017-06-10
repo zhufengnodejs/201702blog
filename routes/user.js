@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let User = require('../model').User;
+let utils = require('../utils');
 //当客户端访问 /user/signup 路径的时候，会交由此路由来进行处理
 router.get('/signup',function(req,res){
   res.render('user/signup',{title:'用户注册'});
@@ -8,6 +9,7 @@ router.get('/signup',function(req,res){
 router.post('/signup',function(req,res){
    //1.得到客户端提交过来的请求体
     let user = req.body;
+    user.password = utils.encry(user.password);
     User.create(user,function(err,doc){
         if(err){
             //如果error有值，就表示注册失败，返回注册面页继续填写
@@ -23,7 +25,8 @@ router.get('/signin',function(req,res){
 });
 router.post('/signin',function(req,res){
   let user = req.body;
-    User.findOne(user,function(err,doc){
+  user.password = utils.encry(user.password);
+  User.findOne(user,function(err,doc){
      if(err){
          res.redirect('back');
      }else{
