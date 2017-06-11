@@ -6,7 +6,7 @@
                 <label for="category">分类</label>
                 <select name="category" id="category" class="form-control">
                     <%categories.forEach(function(category){%>
-                    <option value="<%=category._id%>" <%=article.category.toString() == category._id.toString()?'selected':''%>><%=category.name%></option>
+                    <option value="<%=category._id%>" <%=article.category && article.category.toString() == category._id.toString()?'selected':''%>><%=category.name%></option>
                     <%})%>
                 </select>
             </div>
