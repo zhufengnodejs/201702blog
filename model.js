@@ -13,3 +13,11 @@ let UserSchema = new mongoose.Schema({
 // 4.定义模型
 let User = mongoose.model('User',UserSchema);
 exports.User = User;
+
+let CategorySchema = new mongoose.Schema({
+    name:String
+});
+//得到分类的模型
+let Category = mongoose.model('Category',CategorySchema);
+//把操作数据库的模型导出
+exports.Category = Category;
