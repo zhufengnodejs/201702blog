@@ -4,7 +4,7 @@ let Article = require('../model').Article;
 let Category = require('../model').Category;
 router.get('/add',function(req,res){
   Category.find({},function(err,categories){
-      res.render('article/add',{title:'发表文章',categories});
+      res.render('article/add',{title:'发表文章',categories,article:{}});
   });
 });
 router.post('/add',function(req,res){
@@ -41,8 +41,20 @@ router.get('/delete/:_id',function(req,res){
 router.get('/update/:_id',function(req,res){
   Article.findById(req.params._id).exec(function(err,article){
     Category.find({},function(err,categories){
+        console.log(article);
        res.render('article/add',{title:'更新文章',article,categories});
     });
+  });
+});
+router.post('/update/:_id',function(req,res){
+  let _id = req.params._id;
+  let article = req.body;
+  Article.update({_id},article,function(err,result){
+    if(err){
+        res.redirect('back');
+    }else{
+        res.redirect(`/article/detail/${_id}`);
+    }
   });
 });
 
