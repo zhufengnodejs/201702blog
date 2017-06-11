@@ -21,12 +21,16 @@ router.post('/add',function(req,res){
 });
 router.get('/detail/:_id',function(req,res){
   //根据文章的ID查询文章的对象并且渲染到页面中
-  Article.findById(req.params._id)
-      .populate('category') //把分类ID变成分类对象
-      .populate('user')     //把用户ID变成用户对象
-      .exec(function (err, article) {
-      res.render('article/detail',{title:'文章详情',article});
-  })
+  //increase 把原来的值加1
+  Article.update({_id:req.params._id},{$inc:{pageView:1}},function(err,result){
+      Article.findById(req.params._id)
+          .populate('category') //把分类ID变成分类对象
+          .populate('user')     //把用户ID变成用户对象
+          .exec(function (err, article) {
+              res.render('article/detail',{title:'文章详情',article});
+          })
+  });
+
 });
 router.get('/delete/:_id',function(req,res){
   Article.remove({_id:req.params._id},function(err,result){
