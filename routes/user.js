@@ -10,15 +10,29 @@ router.post('/signup',function(req,res){
    //1.得到客户端提交过来的请求体
     let user = req.body;
     user.password = utils.encry(user.password);
-    User.create(user,function(err,doc){
+    //先查询一下跟此用户名相同的用户还是否存在
+    User.findOne({username:user.username},function(err,oldUser){
         if(err){
-            //如果error有值，就表示注册失败，返回注册面页继续填写
             res.redirect('back');
         }else{
-            //如果注册成功，跳转到登录页
-            res.redirect('/user/signin');
+            if(oldUser){
+                req.flash('error','此用户名已经被占用，请换一个用户名吧');
+                res.redirect('back');
+            }else{
+                User.create(user,function(err,doc){
+                    if(err){
+                        //如果error有值，就表示注册失败，返回注册面页继续填写
+                        res.redirect('back');
+                    }else{
+                        //如果注册成功，跳转到登录页
+                        res.redirect('/user/signin');
+                    }
+                });
+            }
         }
+
     });
+
 });
 router.get('/signin',function(req,res){
   res.render('user/signin',{title:'用户登录'});
