@@ -26,10 +26,13 @@
                     </a>
                 </li>
                 <%}%>
-
-                <%for(let i=1;i<=totalPages;i++){%>
-                <li><a href="/?pageNum=<%=i%>&pageSize=<%=pageSize%>&keyword=<%=keyword%>"><%=i%></a></li>
+                <li class="<%=1 == pageNum?'active':''%>"><a href="/?pageNum=1&pageSize=<%=pageSize%>&keyword=<%=keyword%>">1</a></li>
+                <li class="<%=2 == pageNum?'active':''%>"><a href="/?pageNum=2&pageSize=<%=pageSize%>&keyword=<%=keyword%>">2</a></li>
+                <li><a href="">...</a></li>
+                <%for(let i=pageNum-2;i<=pageNum+2;i++){%>
+                <li class="<%=i == pageNum?'active':''%>"><a href="/?pageNum=<%=i%>&pageSize=<%=pageSize%>&keyword=<%=keyword%>"><%=i%></a></li>
                 <%}%>
+
                 <%if(pageNum<totalPages){%>
                 <li>
                     <a href="/?pageNum=<%=pageNum+1%>&pageSize=<%=pageSize%>&keyword=<%=keyword%>" aria-label="Next">
@@ -37,10 +40,19 @@
                     </a>
                 </li>
                 <%}%>
-
             </ul>
         </nav>
+        <div>
+            共<%=totalPages%>页
+            到第<input value="<%=pageNum%>" id="targetPage" class="form-control" min="1" max="<%=totalPages%>" type="number" style="width:80px;display:inline-block">页
+            <button onclick="goto()" class="btn btn-primary">确定</button>
+        </div>
     </div>
 </div>
-
+<script>
+    function goto(){
+        let targetPage = document.querySelector('#targetPage').value;
+        location = `/?pageNum=${targetPage}&pageSize=<%=pageSize%>&keyword=<%=keyword%>`;
+    }
+</script>
 <% include ./include/footer.html%>
