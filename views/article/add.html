@@ -6,17 +6,17 @@
                 <label for="category">分类</label>
                 <select name="category" id="category" class="form-control">
                     <%categories.forEach(function(category){%>
-                    <option value="<%=category._id%>"><%=category.name%></option>
+                    <option value="<%=category._id%>" <%=article.category == category._id?'selected':''%>><%=category.name%></option>
                     <%})%>
                 </select>
             </div>
             <div class="form-group">
                 <label for="title">标题</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control" id="title" name="title" value="<%=article.title%>">
             </div>
             <div class="form-group">
                 <label for="content">内容</label>
-                <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="content" id="content" cols="30" rows="10" class="form-control"><%=article.content%></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary">

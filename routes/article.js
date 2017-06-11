@@ -37,6 +37,16 @@ router.get('/delete/:_id',function(req,res){
      }
   });
 });
+
+router.get('/update/:_id',function(req,res){
+  Article.findById(req.params._id).exec(function(err,article){
+    Category.find({},function(err,categories){
+       res.render('article/add',{title:'更新文章',article,categories});
+    });
+  });
+});
+
+
 module.exports = router;
 // <%if(user
 
