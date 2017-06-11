@@ -1,8 +1,24 @@
 <% include ../include/header.html%>
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+        <a href="/category/add" class="btn btn-primary">增加分类</a>
         <table class="table table-striped">
-
+           <thead>
+            <th class="text-center">分类名称</th>
+            <th class="text-center">操作</th>
+           </thead>
+            <tbody>
+              <%
+                categories.forEach(function(category){%>
+                   <tr>
+                       <td class="text-center"><%=category.name%></td>
+                       <td class="text-center">
+                           <a href="/category/delete/<%=category._id%>" class="btn btn-danger">删除</a>
+                       </td>
+                   </tr>
+                <%})
+              %>
+            </tbody>
         </table>
     </div>
 </div>
