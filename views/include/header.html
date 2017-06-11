@@ -22,11 +22,14 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="/">首页</a></li>
-                <li><a href="/user/signup">注册</a></li>
-                <li><a href="/user/signin">登录</a></li>
-                <li><a href="/user/signout">退出</a></li>
-                <li><a href="/article/add">发表文章</a></li>
-                <li><a href="/category/list">分类管理</a></li>
+                <%if(user){%>
+                 <li><a href="/user/signout">退出</a></li>
+                 <li><a href="/category/list">分类管理</a></li>
+                 <li><a href="/article/add">发表文章</a></li>
+                <%}else{%>
+                 <li><a href="/user/signup">注册</a></li>
+                 <li><a href="/user/signin">登录</a></li>
+                <%}%>
             </ul>
             <%if(user){%>
                 <ul class="nav navbar-nav navbar-right">
@@ -44,7 +47,7 @@
               <div class="alert alert-success text-center"><%=success%></div>
             <%}%>
             <%if(error){%>
-              <div class="alert alert-danger  text-center"><%=error%></div>
+            <div class="alert alert-danger  text-center"><%=error%></div>
             <%}%>
         </div>
     </div>
