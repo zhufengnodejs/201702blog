@@ -19,4 +19,13 @@ router.get('/list',function(req,res){
         res.render('category/list',{title:'分类列表',categories});
     });
 });
+router.get('/delete/:_id',function(req,res){
+    Category.remove({_id:req.params._id},function(err,result){
+        if(err){
+            res.redirect('back');
+        }else{
+            res.redirect('back');
+        }
+    });
+});
 module.exports = router;
