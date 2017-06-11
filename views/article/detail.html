@@ -8,10 +8,12 @@
         <div class="panel panel-default">
             <div class="panel-heading"><%=article.title%></div>
             <div class="panel-body"><%=article.content%></div>
+        <%if(user && user._id  == article.user._id){%>
             <div class="panel-footer">
                 <a class="btn btn-warning" href="/article/update/<%=article._id%>">编辑</a>
                 <a class="btn btn-danger" href="/article/delete/<%=article._id%>">删除</a>
             </div>
+                <%}%>
         </div>
     </div>
 </div>

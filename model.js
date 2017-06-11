@@ -1,5 +1,7 @@
 //1.引入mongoose模块
 let mongoose = require('mongoose');
+//用ES6自带的Promise替换掉mongoose自带的promise库
+mongoose.Promise = Promise;
 let ObjectId = mongoose.Schema.Types.ObjectId;
 let config = require('./config');
 //2.连接数据库
