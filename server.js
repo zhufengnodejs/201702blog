@@ -33,6 +33,7 @@ app.use(function(req,res,next){
     res.locals.success = req.flash('success').toString();
     res.locals.error = req.flash('error').toString();
     res.locals.user = req.session.user;
+    res.locals.keyword = '';
     next();
 });
 //静态文件中间件的参数是静态文件根目录
