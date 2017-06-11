@@ -1,5 +1,6 @@
 //1.引入mongoose模块
 let mongoose = require('mongoose');
+let ObjectId = mongoose.Schema.Types.ObjectId;
 let config = require('./config');
 //2.连接数据库
 mongoose.connect(config.dbUrl);
@@ -21,3 +22,10 @@ let CategorySchema = new mongoose.Schema({
 let Category = mongoose.model('Category',CategorySchema);
 //把操作数据库的模型导出
 exports.Category = Category;
+
+let ArticleSchema = new mongoose.Schema({
+    title:String,
+    content:String,
+    //ref表示此外键引用的是User集合的主键
+    user:{type:ObjectId,ref:'User'}//成为一个外键
+});
