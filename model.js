@@ -29,3 +29,5 @@ let ArticleSchema = new mongoose.Schema({
     //ref表示此外键引用的是User集合的主键
     user:{type:ObjectId,ref:'User'}//成为一个外键
 });
+let Article = mongoose.model('Article',ArticleSchema);
+exports.Article = Article;
