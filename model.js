@@ -7,7 +7,8 @@ mongoose.connect(config.dbUrl);
 let UserSchema = new mongoose.Schema({
     username:String,
     password:String,
-    email:String
+    email:String,
+    avatar:String
 });
 // 4.定义模型
 let User = mongoose.model('User',UserSchema);

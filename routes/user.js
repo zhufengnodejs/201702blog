@@ -2,13 +2,19 @@ let express = require('express');
 let router = express.Router();
 let User = require('../model').User;
 let utils = require('../utils');
+let multer = require('multer');
+//在NODE的文件路径是相对启动的文件 相对于server.js
+let upload = multer({dest:'./public/uploads'});
 //当客户端访问 /user/signup 路径的时候，会交由此路由来进行处理
 router.get('/signup',function(req,res){
   res.render('user/signup',{title:'用户注册'});
 });
-router.post('/signup',function(req,res){
-   //1.得到客户端提交过来的请求体
+//upload.single('avatar') 会返回一个中间件函数
+router.post('/signup',upload.single('avatar'),function(req,res){
+    //1.得到客户端提交过来的请求体
     let user = req.body;
+    // /uploads/3030a92278ccf4e47197063e4e72a858
+    user.avatar = `/uploads/${req.file.filename}`;
     user.password = utils.encry(user.password);
     //先查询一下跟此用户名相同的用户还是否存在
     User.findOne({username:user.username},function(err,oldUser){
@@ -63,3 +69,16 @@ router.get('/signout',function(req,res){
     res.send('退出');
 });
 module.exports = router;
+
+/**
+ {
+  fieldname: 'avatar', 字段名 表单中的input框的name属性
+  originalname: 'avatar.png', 上传的文件的原始文件名
+  encoding: '7bit',
+  mimetype: 'image/png',文件类型 大类型/小类型
+  destination: './public/uploads', //上传文件的保存路径
+  filename: '3030a92278ccf4e47197063e4e72a858',//在服务器端保存时候的文件名
+  path: 'public\\uploads\\3030a92278ccf4e47197063e4e72a858',
+  size: 8738
+  }
+ **/

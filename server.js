@@ -36,6 +36,7 @@ app.use(function(req,res,next){
 });
 //静态文件中间件的参数是静态文件根目录
 app.use(express.static(path.resolve('node_modules')));
+app.use(express.static(path.resolve('public')));
 //返回一个路由中间件
 let index = require('./routes/index');
 let user = require('./routes/user');
