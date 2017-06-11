@@ -1,0 +1,18 @@
+<% include ../include/header.html%>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <ol class="breadcrumb">
+            <li><a href="/category/list">分类</a></li>
+            <li class="active"><%=article.category.name%></li>
+        </ol>
+        <div class="panel panel-default">
+            <div class="panel-heading"><%=article.title%></div>
+            <div class="panel-body"><%=article.content%></div>
+            <div class="panel-footer">
+                <a class="btn btn-warning" href="/article/update/<%=article._id%>">编辑</a>
+                <a class="btn btn-danger" href="/article/delete/<%=article._id%>">删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../include/footer.html%>

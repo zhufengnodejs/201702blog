@@ -5,7 +5,6 @@ let Article = require('../model').Article;
 router.get('/',function(req,res){
   //populate填充，用来把外键字段从字符串转成对应的文档对象
   Article.find({}).populate('user').exec(function(err,articles){
-      console.log(articles);
       res.render('index',{title:'首页',articles});
   });
 });

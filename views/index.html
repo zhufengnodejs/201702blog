@@ -9,7 +9,9 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><%=article.title%></h4>
+                    <h4 class="media-heading">
+                        <a href="/article/detail/<%=article._id%>"><%=article.title%></a>
+                    </h4>
                     <p><%=article.content%></p>
                     <p>作者:<%=article.user.username%>|发表时间:<%=article.createAt.toLocaleString()%></p>
                 </div>

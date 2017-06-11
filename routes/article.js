@@ -19,4 +19,12 @@ router.post('/add',function(req,res){
         }
     });
 });
+router.get('/detail/:_id',function(req,res){
+  //根据文章的ID查询文章的对象并且渲染到页面中
+  Article.findById(req.params._id)
+      .populate('category')
+      .exec(function (err, article) {
+      res.render('article/detail',{title:'文章详情',article});
+  })
+});
 module.exports = router;
