@@ -26,6 +26,8 @@ exports.Category = Category;
 let ArticleSchema = new mongoose.Schema({
     title:String,
     content:String,
+    category:{type:ObjectId,ref:'Category'},
+    createAt:{type:Date,default:Date.now},
     //ref表示此外键引用的是User集合的主键
     user:{type:ObjectId,ref:'User'}//成为一个外键
 });
