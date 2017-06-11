@@ -32,6 +32,7 @@ app.use(function(req,res,next){
     //给res.locals赋值则意味着所有的模板都能用
     res.locals.success = req.flash('success').toString();
     res.locals.error = req.flash('error').toString();
+    res.locals.user = req.session.user;
     next();
 });
 //静态文件中间件的参数是静态文件根目录
